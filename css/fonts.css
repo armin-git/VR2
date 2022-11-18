@@ -1,0 +1,56 @@
+@font-face {
+  font-family: corbel;
+  src: url("/asset/Fonts/corbel.ttf");
+}
+.f-corbel{
+  font-family: corbel;
+}
+@font-face {
+  font-family: Digikala;
+  src: url("/asset/Fonts/Digikala\ -_font.ttf");
+}
+.f-Digikala{
+  font-family: Digikala;
+}
+@font-face {
+  font-family: Graphik;
+  src: url("/asset/Fonts/Graphik\ Arabic\ ExtraLight.otf");
+}
+.f-Graphik{
+  font-family: Graphik;
+}
+@font-face {
+  font-family: IRANSansWeb_Black;
+  src: url("/asset/Fonts/IRANSansWeb_Black.ttf");
+}
+.f-IRANSansWeb_Black{
+  font-family: IRANSansWeb_Black;
+}
+@font-face {
+  font-family: IRANSansWeb_Light;
+  src: url("/asset/Fonts/IRANSansWeb_Light.ttf");
+}
+.f-IRANSansWeb_Light{
+  font-family: IRANSansWeb_Light;
+}
+@font-face {
+  font-family: IRANSansWeb_Medium;
+  src: url("/asset/Fonts/IRANSansWeb_Medium.ttf");
+}
+.f-IRANSansWeb_Medium{
+  font-family: IRANSansWeb_Medium;
+}
+@font-face {
+  font-family: IRANSansWeb_UltraLight;
+  src: url("/asset/Fonts/IRANSansWeb_UltraLight.ttf");
+}
+.f-IRANSansWeb_UltraLight{
+  font-family: IRANSansWeb_UltraLight;
+}
+@font-face {
+  font-family: IRANSansWeb;
+  src: url("/asset/Fonts/IRANSansWeb.ttf");
+}
+.f-IRANSansWeb{
+  font-family: IRANSansWeb;
+}

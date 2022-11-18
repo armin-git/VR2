@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Menu</title>
+
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/popup-lightbox.min.css" />
+  </head>
+
+  <body class="body-image-gradient">
+    <div style="position: fixed; width: 100%; bottom: 10%">
+      <img
+        id="image-intro-button"
+        style="margin: 0 auto; display: block; width: 60%"
+        src="./asset/img/welcome_button.png"
+        alt=""
+      />
+    </div>
+    <img class="body-image-intro" src="./asset/img/intro_bg-01.png" alt="" />
+
+    <div
+      class="menu-top mx-auto hidee flex-column position-absolute top-0 start-0 end-0"
+    >
+      <div class="p-2 d-flex justify-content-between align-items-center">
+        <img
+          id="home"
+          height="40"
+          style="
+            margin: 10px;
+            margin-bottom: 0px;
+            margin-top: 5px;
+            filter: drop-shadow(3px 3px 4px #00000053);
+          "
+          src="./asset/img/3_home_button.png"
+          alt=""
+        />
+        <img
+          height="15"
+          style="margin: 10px; margin-bottom: 0px; margin-top: 10px"
+          src="./asset/img/3_menu_button.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="menu-main hidee">
+      <div class="menu3-selector"></div>
+
+      <div
+        style="
+          background-image: url('./asset/img/info_bg-02.png');
+          height: 100vh;
+          background-size: cover;
+        "
+      >
+        <img class="image-intro2 hidee" src="./asset/img/info.png" alt="" />
+      </div>
+
+      <div
+        style="
+          padding: 20px;
+          padding-bottom: 70px;
+          border-bottom: 1px solid gray;
+        "
+        class="img-container sub-section1"
+      >
+        <div
+          class="text-end sticky menu1-title f-IRANSansWeb"
+          style="padding-top: 0px"
+        >
+          گالری
+        </div>
+        <div class="menu1-selector" style="height: 40px"></div>
+        <div class="d-flex">
+          <div style="position: relative">
+            <div
+              class="img-title"
+              style="background-image: url('./asset/img/1-1.png')"
+            ></div>
+            <img
+              width="90%"
+              src="./asset/img/1.png"
+              alt=""
+              class="image-right"
+            />
+          </div>
+          <div style="position: relative">
+            <div
+              class="img-title"
+              style="
+                background-image: url('./asset/img/2-1.png');
+                right: 0px;
+                margin-right: 0;
+              "
+            ></div>
+            <img
+              style="float: right"
+              width="90%"
+              src="./asset/img/2.png"
+              alt=""
+              class="image-left"
+            />
+          </div>
+        </div>
+        <div class="d-flex">
+          <div style="position: relative">
+            <div
+              class="img-title"
+              style="background-image: url('./asset/img/1-1.png')"
+            ></div>
+            <img
+              width="90%"
+              src="./asset/img/1.png"
+              alt=""
+              class="image-right"
+            />
+          </div>
+          <div style="position: relative">
+            <div
+              class="img-title"
+              style="
+                background-image: url('./asset/img/2-1.png');
+                right: 0px;
+                margin-right: 0;
+              "
+            ></div>
+            <img
+              style="float: right"
+              width="90%"
+              src="./asset/img/2.png"
+              alt=""
+              class="image-left"
+            />
+          </div>
+        </div>
+        <div class="d-flex">
+          <div style="position: relative">
+            <div
+              class="img-title"
+              style="background-image: url('./asset/img/1-1.png')"
+            ></div>
+            <img
+              width="90%"
+              src="./asset/img/1.png"
+              alt=""
+              class="image-right"
+            />
+          </div>
+          <div style="position: relative">
+            <div
+              class="img-title"
+              style="
+                background-image: url('./asset/img/2-1.png');
+                right: 0px;
+                margin-right: 0;
+              "
+            ></div>
+            <img
+              style="float: right"
+              width="90%"
+              src="./asset/img/2.png"
+              alt=""
+              class="image-left"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style="padding: 20px; min-height: 100vh; position: relative"
+        class="sub-section2"
+      >
+        <div class="sticky" style="padding-top: 0px">
+          <div class="text-end menu2-title f-IRANSansWeb">انتخاب منو</div>
+
+          <div class="d-flex overflow-scroll">
+            <div class="icon-ghaza">
+              <img
+                id="icon_ghaza1"
+                class="icon-ghaza-main"
+                src="./asset/img/5_corsan_icon.png"
+                alt=""
+              />
+              <img
+                id="icon_ghaza1_black"
+                class="icon-ghaza-main hidee"
+                src="./asset/img/5_corsan_icon_selection.png"
+                alt=""
+              />
+              <div class="icon-ghaza-title">کیک</div>
+            </div>
+
+            <div class="icon-ghaza">
+              <img
+                id="icon_ghaza2"
+                class="icon-ghaza-main"
+                src="./asset/img/5_burger_icon.png"
+                alt=""
+              />
+              <img
+                id="icon_ghaza2_black"
+                class="icon-ghaza-main hidee"
+                src="./asset/img/5_burger_icon_selection.png"
+                alt=""
+              />
+              <div class="icon-ghaza-title">ساندویچ</div>
+            </div>
+
+            <div class="icon-ghaza">
+              <img
+                id="icon_ghaza3"
+                class="icon-ghaza-main"
+                src="./asset/img/5_fries_icon.png"
+                alt=""
+              />
+              <img
+                id="icon_ghaza3_black"
+                class="icon-ghaza-main hidee"
+                src="./asset/img/5_fries_icon_selection.png"
+                alt=""
+              />
+              <div class="icon-ghaza-title">پیش غذا</div>
+            </div>
+
+            <div class="icon-ghaza">
+              <img
+                id="icon_ghaza4"
+                class="icon-ghaza-main"
+                src="./asset/img/5_pasta_icon.png"
+                alt=""
+              />
+              <img
+                id="icon_ghaza4_black"
+                class="icon-ghaza-main hidee"
+                src="./asset/img/5_pasta_icon_selection.png"
+                alt=""
+              />
+              <div class="icon-ghaza-title">پاستا</div>
+            </div>
+
+            <div class="icon-ghaza">
+              <img
+                id="icon_ghaza5"
+                class="icon-ghaza-main"
+                src="./asset/img/5_salad_icon.png"
+                alt=""
+              />
+              <img
+                id="icon_ghaza5_black"
+                class="icon-ghaza-main hidee"
+                src="./asset/img/5_salad_icon_selection.png"
+                alt=""
+              />
+              <div class="icon-ghaza-title">سالاد</div>
+            </div>
+          </div>
+        </div>
+        <div class="menu2-selector" style="height: 140px"></div>
+
+        <div class="d-flex dish-row">
+          <div class="dish-container dish-left ghaza1 item1">
+            <img
+              class="dish-img"
+              src="./asset/img/4_chocolate_cake.png"
+              alt=""
+            />
+            <div class="dish-title f-Digikala">کیک شکلاتی</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+          <div class="dish-container dish-right ghaza1 item2">
+            <img class="dish-img" src="./asset/img/4_corsan.png" alt="" />
+            <div class="dish-title f-Digikala">کروسان ساده</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+        </div>
+
+        <div class="d-flex dish-row">
+          <div class="dish-container dish-left ghaza1 item3">
+            <img class="dish-img" src="./asset/img/4_corsan_sugar.png" alt="" />
+            <div class="dish-title f-Digikala">کروسان پودر قندی</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+          <div class="dish-container dish-right ghaza1 item4">
+            <img class="dish-img" src="./asset/img/4_moca.png" alt="" />
+            <div class="dish-title f-Digikala">کیک موکا</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+        </div>
+
+        <div class="d-flex dish-row">
+          <div class="dish-container dish-left ghaza2 item1">
+            <img class="dish-img" src="./asset/img/burger1.png" alt="" />
+            <div class="dish-title f-Digikala">برگر</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+        </div>
+
+        <div class="d-flex dish-row">
+          <div class="dish-container dish-left ghaza3 item1">
+            <img class="dish-img" src="./asset/img/4_pish_ghaza.png" alt="" />
+            <div class="dish-title f-Digikala">بال کبابی</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+        </div>
+
+        <div class="d-flex dish-row">
+          <div class="dish-container dish-left ghaza4 item1">
+            <img class="dish-img" src="./asset/img/4_pasta_1.png" alt="" />
+            <div class="dish-title f-Digikala">پاستا آلفردو</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+          <div class="dish-container dish-right ghaza4 item2">
+            <img class="dish-img" src="./asset/img/4_pasta_2.png" alt="" />
+            <div class="dish-title f-Digikala">پاستا ایتالیایی</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+        </div>
+
+        <div class="d-flex dish-row">
+          <div class="dish-container dish-left ghaza5 item1">
+            <img class="dish-img" src="./asset/img/4_salad_1.png" alt="" />
+            <div class="dish-title f-Digikala">گوجه فرنگی ونعنا</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+          <div class="dish-container dish-right ghaza5 item2">
+            <img class="dish-img" src="./asset/img/4_salad_2.png" alt="" />
+            <div class="dish-title f-Digikala">یونانی</div>
+            <div class="dish-price f-IRANSansWeb">14000 تومان</div>
+          </div>
+        </div>
+
+        <div class="food-big-image" style="display: none; text-align: center">
+          <p
+            class="f-IRANSansWeb_Black"
+            style="color: #39b34a; text-align: center"
+          >
+            برای جانمایی غذا در محیط دکمه پلی را فشار دهید
+          </p>
+          <img class="food-big-picture" src="" alt="" style="width: 80vw" />
+
+          <model-viewer style="display: none;"
+            class="food-big-picture-3d"
+            alt=""    
+            shadow-intensity="1"
+            camera-controls
+            touch-action="pan-y"
+          ></model-viewer>
+        
+        </div>
+
+        <div class="food-vertical" style="display: none">
+          <div
+            class="d-flex overflow-scroll dish-container-h-parent foodvertical1"
+          >
+            <div id="d1" class="dish-container-h d-flex">
+              <img
+                class="dish-img-h"
+                src="./asset/img/4_chocolate_cake.png"
+                alt=""
+              />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">کیک</span>
+                <br />
+                <span class="dish-h-description">کیک شکلاتی</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+
+            <div id="d2" class="dish-container-h d-flex">
+              <img class="dish-img-h" src="./asset/img/4_corsan.png" alt="" />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">کیک</span>
+                <br />
+                <span class="dish-h-description">کروسان ساده</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+
+            <div id="d3" class="dish-container-h d-flex">
+              <img
+                class="dish-img-h"
+                src="./asset/img/4_corsan_sugar.png"
+                alt=""
+              />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">کیک</span>
+                <br />
+                <span class="dish-h-description">کروسان پودر قندی</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+
+            <div id="d4" class="dish-container-h d-flex">
+              <img class="dish-img-h" src="./asset/img/4_moca.png" alt="" />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">کیک</span>
+                <br />
+                <span class="dish-h-description">کیک موکا</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="d-flex overflow-scroll dish-container-h-parent foodvertical2"
+          >
+            <div id="d1" class="dish-container-h d-flex">
+              <img class="dish-img-h" src="./asset/img/burger1.png" alt="" />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">ساندویچ</span>
+                <br />
+                <span class="dish-h-description">برگر</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="d-flex overflow-scroll dish-container-h-parent foodvertical3"
+          >
+            <div id="d1" class="dish-container-h d-flex">
+              <img
+                class="dish-img-h"
+                src="./asset/img/4_pish_ghaza.png"
+                alt=""
+              />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">پیش غذا</span>
+                <br />
+                <span class="dish-h-description">بال کبابی</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="d-flex overflow-scroll dish-container-h-parent foodvertical4"
+          >
+            <div id="d1" class="dish-container-h d-flex">
+              <img class="dish-img-h" src="./asset/img/4_pasta_1.png" alt="" />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">پاستا</span>
+                <br />
+                <span class="dish-h-description">آلفردو</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+
+            <div id="d2" class="dish-container-h d-flex">
+              <img class="dish-img-h" src="./asset/img/4_pasta_2.png" alt="" />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">پاستا</span>
+                <br />
+                <span class="dish-h-description">ایتالیایی</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="d-flex overflow-scroll dish-container-h-parent foodvertical5"
+          >
+            <div id="d1" class="dish-container-h d-flex">
+              <img class="dish-img-h" src="./asset/img/4_salad_1.png" alt="" />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">سالاد</span>
+                <br />
+                <span class="dish-h-description">گوجه فرنگی و نعنا</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+
+            <div id="d2" class="dish-container-h d-flex">
+              <img class="dish-img-h" src="./asset/img/4_salad_2.png" alt="" />
+              <div class="dish-img-h-right">
+                <span class="dish-h-title">سالاد</span>
+                <br />
+                <span class="dish-h-description">یونانی</span>
+                <br />
+                <span class="dish-h-price">14000 تومان</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="menu-bottom mx-auto hidee flex-column position-absolute bottom-0 start-0 end-0"
+    >
+      <div class="t-container p-2 d-flex justify-content-around bg-dark2">
+        <div id="icon-info" class="t-filter1">
+          <hr class="menu-indicator menu-line1" />
+          <center>
+            <img width="13" src="./asset/img/2_info_icon.png" alt="" />
+          </center>
+        </div>
+
+        <div id="icon-gallary" class="t-filter1">
+          <hr class="menu-indicator menu-line2" />
+          <center>
+            <img width="33" src="./asset/img/2_gallery_icon.png" alt="" />
+          </center>
+        </div>
+
+        <div id="icon-dish" class="t-filter1">
+          <hr class="menu-indicator menu-line3" />
+          <center>
+            <img width="35" src="./asset/img/2_menu_icon.png" alt="" />
+          </center>
+        </div>
+
+        <div id="icon-qube" class="t-filter1">
+          <hr class="menu-indicator menu-line31" />
+          <center>
+            <img width="24" src="./asset/img/qube.png" alt="" />
+          </center>
+        </div>
+
+        <div id="icon-3d" class="t-filter2" style="display: none">
+          <hr class="menu-indicator menu-line4" />
+          <center>
+            <img width="35" src="./asset/img/5_3d_icon.png" alt="" />
+          </center>
+        </div>
+
+        <a
+          id="icon-play-ar"
+          class="t-filter2"
+          style="display: none"
+          download="avocado.usdz"
+          rel="ar"
+          href="https://cdn.glitch.global/b01652c3-8c29-4e46-857e-fd0c9d60b76f/cube_cake.usdz?v=1661013370407"
+        >
+          <img src="" />
+          <hr class="menu-indicator menu-line5" />
+        </a>
+
+        <div id="icon-get-screenshot" class="t-filter2" style="display: none">
+          <hr class="menu-indicator menu-line6" />
+          <center>
+            <img width="35" src="./asset/img/5_screenshot_icon.png" alt="" />
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+    <script src="js/jquery.popup.lightbox.min.js"></script>
+
+    <script src="js/eruda.js"></script>
+    <script src="js/three.js"></script>
+    <script src="js/GLTFLoader.js"></script>
+    <script src="js/hammer.min.js"></script>
+    <script type="module" src="js/model-viewer.min.js"></script>
+  </body>
+</html>
