@@ -154,7 +154,7 @@ body {
   filter: drop-shadow(5px 5px 10px #00000099);
 }
 .img-title {
-  height: 100px;
+  height: 40px;
   background-size: 66%;
   background-repeat: no-repeat;
   background-position: right top;
@@ -237,7 +237,7 @@ body {
 
 @media only screen and (max-width: 600px) {
   body {
-    background-color: lightblue;
+    /* background-color: lightblue; */
   }
 }
 

@@ -21,6 +21,7 @@ let menuNumberLast;
 let itemNumberLast;
 let currentSession = null;
 var inBigPictureMode = false;
+var inMainMenu=false;
 
 loader = new THREE.GLTFLoader();
 
@@ -209,19 +210,37 @@ $(document).ready(function () {
   var mc64 = new Hammer.Manager(document.getElementById("icon-3d"));
   mc64.add(new Hammer.Tap({ event: "singletap" }));
   mc64.on("singletap ", function (ev) {
-    if(!$(".food-big-picture-3d").is(":visible")){
+
+    if(currentSession != null){      
+      currentSession.end();
+      show3Dside();
+    }
+    else chnage3Dside();
+
+    function chnage3Dside(){
+      if(!$(".food-big-picture-3d").is(":visible")) show3Dside();
+      else hide3Dside();
+    }
+
+    function show3Dside(){
       $(".food-big-picture").fadeOut(function () {  
         $(".food-big-picture-3d").fadeIn()
         icon_3d.style.filter = "brightness(50%) sepia(100) saturate(100) hue-rotate(130deg)";
-
       });
     }
-    else{
+    function hide3Dside(){
       $(".food-big-picture-3d").fadeOut(function () {  
         $(".food-big-picture").fadeIn()
         icon_3d.style.filter = null;
-      });
+      });      
     }
+  });
+
+  var mc65 = new Hammer.Manager(document.getElementById("icon-get-screenshot"));
+  mc65.add(new Hammer.Tap({ event: "singletap" }));
+  mc65.on("singletap ", function (ev) {
+    if($(".menu-main").is(":visible")) $(".menu-main").css("display", "");
+    else $(".menu-main").css("display", "block");
   });
 
 
@@ -265,6 +284,7 @@ $(document).ready(function () {
   var mc10 = new Hammer.Manager(document.getElementById("home"));
   mc10.add(new Hammer.Tap({ event: "singletap" }));
   mc10.on("singletap ", function (ev) {
+    inMainMenu=true;
     hideBigPicture();
     for (let i = 0; i <= 5; i++) {
       if(menuNumber==i){
@@ -273,15 +293,18 @@ $(document).ready(function () {
         $("#icon_ghaza"+i+"_black").show();
         $(".ghaza"+i).show();
       }
-    }
+    };
+    console.log("taped on home");
+
   });
 });
 
-hideIntro();
+//hideIntro();
 // showBigPicture();
 
 function showBigPicture() {
   inBigPictureMode = true;
+  inMainMenu=false;  
 
   $(".sub-section1").hide();
   $(".dish-row").removeClass("d-flex").hide();
@@ -335,9 +358,13 @@ function hideBigPicture() {
   $(".menu3-selector").next().removeClass("hidee");
   $(".sticky").css("background-color", "#f7f7f7");
 
-  $(".menu-main").scrollTo($(".menu2-selector"), {
-    duration: 1,
-  });
+
+  setTimeout(function() {
+    console.log("try scrolling");
+    $(".menu-main").scrollTo($(".menu2-selector"), {
+      duration: 1,
+    });
+  }, 1000);
 
   icon_play_ar.style.filter = null;
   icon_qube.style.filter = null;
@@ -382,7 +409,7 @@ function DeviceDetector() {
 }
 
 function init() {
-  //eruda.init();
+  eruda.init();
 
   container = document.createElement("div");
   document.body.appendChild(container);
@@ -468,11 +495,14 @@ function init() {
         $(".food-big-image").hide();
       }
       function onSessionEnded(/*event*/) {
+        $(".menu-main").css("display", "block");
         currentSession.removeEventListener("end", onSessionEnded);
         currentSession = null;
         icon_play_ar.style.filter = "brightness(50%) sepia(100) saturate(100) hue-rotate(130deg)";
         icon_qube.style.filter = "brightness(50%) sepia(100) saturate(100) hue-rotate(130deg)";
-        $(".food-big-image").show();
+        if(inMainMenu==false){
+          $(".food-big-image").show();
+        }
 
       }
       //button.style.filter = "brightness(50%) sepia(100) saturate(100) hue-rotate(135deg)";
