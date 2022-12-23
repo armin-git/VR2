@@ -1,4 +1,5 @@
 var timerWrapper = null;
+var timerWrapperPan = null;
 var timerChnageMenu = null;
 let container;
 let camera, scene, renderer;
@@ -22,6 +23,7 @@ let itemNumberLast;
 let currentSession = null;
 var inBigPictureMode = false;
 var inMainMenu=false;
+var onPan=false
 
 loader = new THREE.GLTFLoader();
 
@@ -33,7 +35,9 @@ init();
 animate();
 addReticleToScene();
 setInterval(function () {
+  if(onPan)return;
   if ($(".menu1-title").offset().top > 100) {
+    console.log("menu-main edited");
     $(".menu-line1").addClass("menu-indicator-color");
     $(".menu-line2").removeClass("menu-indicator-color");
     $(".menu-line3").removeClass("menu-indicator-color");
@@ -55,9 +59,16 @@ setInterval(function () {
     $(".menu-line3").addClass("menu-indicator-color");
   }
   if ($(".menu-main").is(":visible") && $(".menu1-title").offset().top <= 500) {
-    $(".menu-main").css("margin-top", "7vh");
-    $(".menu-main").css("margin-bottom", "11vh");
-    $(".menu-main").css("height", "82vh");
+    console.log("menu-main edited");
+    $(".menu-main").css("margin-top", "7vh");  
+    if(inBigPictureMode){
+      $(".menu-main").css("margin-bottom", "initial");
+      $(".menu-main").css("height", "initial");
+    }
+    else{
+      $(".menu-main").css("margin-bottom", "11vh");
+      $(".menu-main").css("height", "82vh");
+    }
     $(".menu-top").addClass("d-flex");
     $(".menu-top").show();
   }
@@ -239,8 +250,15 @@ $(document).ready(function () {
   var mc65 = new Hammer.Manager(document.getElementById("icon-get-screenshot"));
   mc65.add(new Hammer.Tap({ event: "singletap" }));
   mc65.on("singletap ", function (ev) {
-    if($(".menu-main").is(":visible")) $(".menu-main").css("display", "");
-    else $(".menu-main").css("display", "block");
+    if(currentSession == null)return
+    if($(".menu-main").is(":visible")) {
+      $(".menu-main").css("display", "");
+      $(".food-vertical").css("display", "none");
+    }
+    else {
+      $(".menu-main").css("display", "block");
+      $(".food-vertical").css("display", "block");
+    }
   });
 
 
@@ -308,7 +326,7 @@ function showBigPicture() {
 
   $(".sub-section1").hide();
   $(".dish-row").removeClass("d-flex").hide();
-  $(".sub-section2").css("min-height", "82vh");
+  $(".sub-section2").css("min-height", "");
   $(".sub-section2").css("padding-top", "0px");
 
   $(".menu-line1").parent().hide();
@@ -360,10 +378,18 @@ function hideBigPicture() {
 
 
   setTimeout(function() {
-    console.log("try scrolling");
+    console.log("try1 scrolling");
     $(".menu-main").scrollTo($(".menu2-selector"), {
       duration: 1,
     });
+
+    setTimeout(function() {
+      console.log("try2 scrolling ");
+      $(".menu-main").scrollTo($(".menu2-selector"), {
+        duration: 1,
+      });
+    }, 1000);
+
   }, 1000);
 
   icon_play_ar.style.filter = null;
@@ -610,6 +636,14 @@ function init() {
   });
   hammertime.get("pan").set({ direction: Hammer.DIRECTION_ALL });
   hammertime.on("panleft panright", (ev) => {
+    
+    console.log("on pan");
+    onPan=true;
+    clearTimeout(timerWrapperPan);
+    timerWrapperPan = setTimeout(function () {
+      onPan=false;
+    }, 1000);
+    
     panMesh(ev.deltaY, ev.type);
   });
 

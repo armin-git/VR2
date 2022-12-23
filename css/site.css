@@ -189,8 +189,8 @@ body {
 
 .food-vertical {
   position: absolute;
-  bottom: 0px;
-  width: calc(100% - 40px);
+  bottom: 100px;
+  width: calc(100% - 0px);
   z-index: 9;
 }
 .dish-container-h-parent{
