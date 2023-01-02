@@ -91,11 +91,14 @@ $(document).ready(function () {
     $(".ghaza1").fadeIn(1000);
     if (inBigPictureMode) {
       $(".foodvertical1").show().addClass("d-flex");
+      $(".foodvertical1").scrollTo(0, 0);
+
       $(".foodvertical2").hide().removeClass("d-flex");
       $(".foodvertical3").hide().removeClass("d-flex");
       $(".foodvertical4").hide().removeClass("d-flex");
       $(".foodvertical5").hide().removeClass("d-flex");
-      $(".foodvertical1").scrollTo(0, 0);
+      $(".foodvertical6").hide().removeClass("d-flex");
+
     }
     addModelToScene(menuNumber, itemNumber);
   });
@@ -111,11 +114,15 @@ $(document).ready(function () {
     $(".ghaza2").fadeIn(1000);
     if (inBigPictureMode) {
       $(".foodvertical1").hide().removeClass("d-flex");
+
       $(".foodvertical2").show().addClass("d-flex");
+      $(".foodvertical2").scrollTo(0, 0);
+
       $(".foodvertical3").hide().removeClass("d-flex");
       $(".foodvertical4").hide().removeClass("d-flex");
       $(".foodvertical5").hide().removeClass("d-flex");
-      $(".foodvertical2").scrollTo(0, 0);
+      $(".foodvertical6").hide().removeClass("d-flex");
+
     }
     addModelToScene(menuNumber, itemNumber);
   });
@@ -132,10 +139,13 @@ $(document).ready(function () {
     if (inBigPictureMode) {
       $(".foodvertical1").hide().removeClass("d-flex");
       $(".foodvertical2").hide().removeClass("d-flex");
+
       $(".foodvertical3").show().addClass("d-flex");
+      $(".foodvertical3").scrollTo(0, 0);
+
       $(".foodvertical4").hide().removeClass("d-flex");
       $(".foodvertical5").hide().removeClass("d-flex");
-      $(".foodvertical3").scrollTo(0, 0);
+      $(".foodvertical6").hide().removeClass("d-flex");
     }
     addModelToScene(menuNumber, itemNumber);
   });
@@ -153,9 +163,12 @@ $(document).ready(function () {
       $(".foodvertical1").hide().removeClass("d-flex");
       $(".foodvertical2").hide().removeClass("d-flex");
       $(".foodvertical3").hide().removeClass("d-flex");
+
       $(".foodvertical4").show().addClass("d-flex");
-      $(".foodvertical5").hide().removeClass("d-flex");
       $(".foodvertical4").scrollTo(0, 0);
+
+      $(".foodvertical5").hide().removeClass("d-flex");
+      $(".foodvertical6").hide().removeClass("d-flex");
     }
     addModelToScene(menuNumber, itemNumber);
   });
@@ -174,8 +187,34 @@ $(document).ready(function () {
       $(".foodvertical2").hide().removeClass("d-flex");
       $(".foodvertical3").hide().removeClass("d-flex");
       $(".foodvertical4").hide().removeClass("d-flex");
+
       $(".foodvertical5").show().addClass("d-flex");
       $(".foodvertical5").scrollTo(0, 0);
+
+      $(".foodvertical6").hide().removeClass("d-flex");
+
+    }
+    addModelToScene(menuNumber, itemNumber);
+  });
+
+  var mc51 = new Hammer.Manager(document.getElementById("icon_ghaza6"));
+  mc51.add(new Hammer.Tap({ event: "singletap" }));
+  mc51.on("singletap ", function (ev) {
+    hideAllGhaza();
+    menuNumber = 6;
+    itemNumber=1;
+    $("#icon_ghaza6").hide();
+    $("#icon_ghaza6_black").show();
+    $(".ghaza6").fadeIn(1000);
+    if (inBigPictureMode) {
+      $(".foodvertical1").hide().removeClass("d-flex");
+      $(".foodvertical2").hide().removeClass("d-flex");
+      $(".foodvertical3").hide().removeClass("d-flex");
+      $(".foodvertical4").hide().removeClass("d-flex");
+      $(".foodvertical5").hide().removeClass("d-flex");
+
+      $(".foodvertical6").show().addClass("d-flex");
+      $(".foodvertical6").scrollTo(0, 0);
     }
     addModelToScene(menuNumber, itemNumber);
   });
@@ -186,18 +225,21 @@ $(document).ready(function () {
     $("#icon_ghaza3").show();
     $("#icon_ghaza4").show();
     $("#icon_ghaza5").show();
+    $("#icon_ghaza6").show();
 
     $("#icon_ghaza1_black").hide();
     $("#icon_ghaza2_black").hide();
     $("#icon_ghaza3_black").hide();
     $("#icon_ghaza4_black").hide();
     $("#icon_ghaza5_black").hide();
+    $("#icon_ghaza6_black").hide();
 
     $(".ghaza1").hide();
     $(".ghaza2").hide();
     $(".ghaza3").hide();
     $(".ghaza4").hide();
     $(".ghaza5").hide();
+    $(".ghaza6").hide();
   }
 
   var mc61 = new Hammer.Manager(document.getElementById("icon-gallary"));
@@ -273,11 +315,13 @@ $(document).ready(function () {
       else if ($(that).attr("class").includes("item2")) itemNumber = 2;
       else if ($(that).attr("class").includes("item3")) itemNumber = 3;
       else if ($(that).attr("class").includes("item4")) itemNumber = 4;
+      else if ($(that).attr("class").includes("item5")) itemNumber = 5;
+      else if ($(that).attr("class").includes("item6")) itemNumber = 6;
 
       addModelToScene(menuNumber, itemNumber);
       showBigPicture();
 
-      for (let i = 0; i <= 5; i++) {
+      for (let i = 0; i <= 6; i++) {
         $(".foodvertical"+i).hide().removeClass("d-flex");
         if ($(that).attr("class").includes("ghaza"+i)) {
           menuNumber = i;
@@ -304,7 +348,7 @@ $(document).ready(function () {
   mc10.on("singletap ", function (ev) {
     inMainMenu=true;
     hideBigPicture();
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i <= 6; i++) {
       if(menuNumber==i){
         hideAllGhaza();
         $("#icon_ghaza"+i).hide();
@@ -545,7 +589,7 @@ function init() {
 
               showBigPicture();
 
-              for (let i = 0; i <= 5; i++) {
+              for (let i = 0; i <= 6; i++) {
                 $(".foodvertical"+i).hide().removeClass("d-flex");
 
                 if (menuNumber==i) {
@@ -663,8 +707,8 @@ async function addModelToScene(menuNumber, itemNumber) {
   var objectModel = getModelUrl(menuNumber, itemNumber);
 
   if (objectModel != null) {
-    const gltf = await loader.loadAsync(objectModel);
     $(".food-big-picture-3d").attr("src", objectModel);
+    const gltf = await loader.loadAsync(objectModel);
     if (modelAdded) {
       scene.remove(model);
       model = null;
@@ -696,39 +740,50 @@ async function addModelToScene(menuNumber, itemNumber) {
 }
 
 function getModelUrl(menuNumber, itemNumber) {
-  if (menuNumber == 1 && itemNumber == 1) return "./asset/glb/1.glb";
-  if (menuNumber == 1 && itemNumber == 2) return "./asset/glb/2.glb";
-  if (menuNumber == 1 && itemNumber == 3) return "./asset/glb/3.glb";
-  if (menuNumber == 1 && itemNumber == 4) return "./asset/glb/4.glb";
+  if (menuNumber == 1 && itemNumber == 1) return "./asset/glb/1_rollet/1_rollet_wood.glb";
+  if (menuNumber == 1 && itemNumber == 2) return "./asset/glb/2_rolletsuit/2_rolletsuit.glb";
+  if (menuNumber == 1 && itemNumber == 3) return "./asset/glb/3_nonkhamei/3_nonkhamei.glb";
+  if (menuNumber == 1 && itemNumber == 4) return "./asset/glb/4_cubecake/4_cubecake.glb";
+  if (menuNumber == 1 && itemNumber == 5) return "./asset/glb/5_corsan/5_corsan.glb";
+  if (menuNumber == 1 && itemNumber == 6) return "./asset/glb/6_tiny/tiny.glb";
 
-  if (menuNumber == 2 && itemNumber == 1) return "./asset/glb/1.glb";
+  if (menuNumber == 2 && itemNumber == 1) return "./asset/glb/10_parmaburger/07.glb";
 
-  if (menuNumber == 3 && itemNumber == 1) return "./asset/glb/1.glb";
+  if (menuNumber == 3 && itemNumber == 1) return "./asset/glb/8_kalbas/kalbas.glb";
+  if (menuNumber == 3 && itemNumber == 2) return "./asset/glb/9_orange/orange_150dpi.glb";
 
-  if (menuNumber == 4 && itemNumber == 1) return "./asset/glb/1.glb";
-  if (menuNumber == 4 && itemNumber == 2) return "./asset/glb/2.glb";
+  if (menuNumber == 4 && itemNumber == 1) return "./asset/glb/7_lazania/lazania.glb";
+  if (menuNumber == 4 && itemNumber == 2) return "./asset/glb/13_alferedo_pasta/alferedo.glb";
+  if (menuNumber == 4 && itemNumber == 3) return "./asset/glb/12_tandori_pasta/2.glb";
 
   if (menuNumber == 5 && itemNumber == 1) return "./asset/glb/1.glb";
   if (menuNumber == 5 && itemNumber == 2) return "./asset/glb/2.glb";
+
+  if (menuNumber == 6 && itemNumber == 1) return "./asset/glb/11_pizzasisili/pizza_circle_150dpi.glb";
 }
 
 function getModelPicture(menuNumber, itemNumber) {
-  if (menuNumber == 1 && itemNumber == 1)
-    return "./asset/img/4_chocolate_cake.png";
-  if (menuNumber == 1 && itemNumber == 2) return "./asset/img/4_corsan.png";
-  if (menuNumber == 1 && itemNumber == 3)
-    return "./asset/img/4_corsan_sugar.png";
-  if (menuNumber == 1 && itemNumber == 4) return "./asset/img/4_moca.png";
+  if (menuNumber == 1 && itemNumber == 1) return "./asset/glb/1_rollet/1_rollet.png";
+  if (menuNumber == 1 && itemNumber == 2) return "./asset/glb/2_rolletsuit/2_rolletsuit1.png";
+  if (menuNumber == 1 && itemNumber == 3) return "./asset/glb/3_nonkhamei/nonkhamei1.png";
+  if (menuNumber == 1 && itemNumber == 4) return "./asset/glb/4_cubecake/4_cubecake.png";
+  if (menuNumber == 1 && itemNumber == 5) return "./asset/glb/5_corsan/5_corsan.png";
+  if (menuNumber == 1 && itemNumber == 6) return "./asset/glb/5_corsan/5_corsan.png";
 
-  if (menuNumber == 2 && itemNumber == 1) return "./asset/img/burger1.png";
+  if (menuNumber == 2 && itemNumber == 1) return "./asset/glb/10_parmaburger/10_parmaburger.png";
 
-  if (menuNumber == 3 && itemNumber == 1) return "./asset/img/4_pish_ghaza.png";
+  if (menuNumber == 3 && itemNumber == 1) return "./asset/glb/8_kalbas/8_kalbas.png";
+  if (menuNumber == 3 && itemNumber == 2) return "./asset/glb/9_orange/9_orange.png";
 
-  if (menuNumber == 4 && itemNumber == 1) return "./asset/img/4_pasta_1.png";
-  if (menuNumber == 4 && itemNumber == 2) return "./asset/img/4_pasta_2.png";
+  if (menuNumber == 4 && itemNumber == 1) return "./asset/glb/7_lazania/7_lazania.png";
+  if (menuNumber == 4 && itemNumber == 2) return "./asset/glb/13_alferedo_pasta/4_pasta_1.png";
+  if (menuNumber == 4 && itemNumber == 3) return "./asset/glb/12_tandori_pasta/4_pasta_2.png";
+
 
   if (menuNumber == 5 && itemNumber == 1) return "./asset/img/4_salad_1.png";
   if (menuNumber == 5 && itemNumber == 2) return "./asset/img/4_salad_2.png";
+
+  if (menuNumber == 6 && itemNumber == 1) return "./asset/glb/11_pizzasisili/11_pizza.png";
   return null;
 }
 
@@ -743,6 +798,8 @@ $(".dish-container-h-parent").scroll(function () {
       var d2 = $(pre + " #d2").position().left;
       var d3 = $(pre + " #d3").position().left;
       var d4 = $(pre + " #d4").position().left;
+      var d5 = $(pre + " #d5").position().left;
+      var d6 = $(pre + " #d6").position().left;
     }
     if (menuNumber == 2) {
       pre = ".foodvertical2";
@@ -751,16 +808,23 @@ $(".dish-container-h-parent").scroll(function () {
     if (menuNumber == 3) {
       pre = ".foodvertical3";
       var d1 = $(pre + " #d1").position().left;
+      var d2 = $(pre + " #d2").position().left;
     }
     if (menuNumber == 4) {
       pre = ".foodvertical4";
       var d1 = $(pre + " #d1").position().left;
       var d2 = $(pre + " #d2").position().left;
+      var d3 = $(pre + " #d3").position().left;
     }
     if (menuNumber == 5) {
       pre = ".foodvertical5";
       var d1 = $(pre + " #d1").position().left;
       var d2 = $(pre + " #d2").position().left;
+    }
+
+    if (menuNumber == 6) {
+      pre = ".foodvertical6";
+      var d1 = $(pre + " #d1").position().left;
     }
 
     var maxW = $(pre + " #d1").width();
@@ -769,6 +833,8 @@ $(".dish-container-h-parent").scroll(function () {
     else if (d2 > -15 && d2 < maxW) itemNumber = 2;
     else if (d3 > -15 && d3 < maxW) itemNumber = 3;
     else if (d4 > -15 && d4 < maxW) itemNumber = 4;
+    else if (d5 > -15 && d5 < maxW) itemNumber = 5;
+    else if (d6 > -15 && d6 < maxW) itemNumber = 6;
 
     console.log("menuNumber: " + menuNumber + " itemNumber: " + itemNumber);
 

@@ -229,10 +229,12 @@ body {
 }
 .dish-img-h-right {
   padding: 15px;
+  padding-left: 0;
   margin-left: 0px;
   width: 190px;
   text-align: right;
   direction: rtl;
+  line-height: 1.1;
 }
 
 @media only screen and (max-width: 600px) {
