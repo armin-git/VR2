@@ -702,13 +702,22 @@ async function addModelToScene(menuNumber, itemNumber) {
     return;
   }
 
+  menuNumberLast = menuNumber;
+  itemNumberLast = itemNumber;
+
   var picture = getModelPicture(menuNumber, itemNumber);
   if (picture != null) $(".food-big-picture").attr("src", picture);
   var objectModel = getModelUrl(menuNumber, itemNumber);
 
   if (objectModel != null) {
     $(".food-big-picture-3d").attr("src", objectModel);
-    const gltf = await loader.loadAsync(objectModel);
+    var gltf;
+    try {
+      gltf = await loader.loadAsync(objectModel);
+    } catch (err){
+      console.log("error loading glb");
+      return;
+    }
     if (modelAdded) {
       scene.remove(model);
       model = null;
@@ -733,9 +742,6 @@ async function addModelToScene(menuNumber, itemNumber) {
       model.quaternion.setFromRotationMatrix(reticle.matrix);
     }
     modelAdded = true;
-
-    menuNumberLast = menuNumber;
-    itemNumberLast = itemNumber;
   }
 }
 
