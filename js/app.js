@@ -3,7 +3,8 @@ var timerWrapperPan = null;
 var timerChnageMenu = null;
 let container;
 let camera, scene, renderer;
-let loader;
+let gltfLoader;
+let dracoLoader;
 let reticle;
 let controller;
 let model;
@@ -25,7 +26,13 @@ var inBigPictureMode = false;
 var inMainMenu=false;
 var onPan=false
 
-loader = new THREE.GLTFLoader();
+
+gltfLoader = new THREE.GLTFLoader();
+dracoLoader = new THREE.DRACOLoader();
+
+dracoLoader.setDecoderPath('/js/');
+gltfLoader.setDRACOLoader( dracoLoader );
+
 
 var icon_play_ar = document.getElementById("icon-play-ar");
 var icon_qube = document.getElementById("icon-qube");
@@ -37,7 +44,7 @@ addReticleToScene();
 setInterval(function () {
   if(onPan)return;
   if ($(".menu1-title").offset().top > 100) {
-    console.log("menu-main edited");
+    //console.log("menu-main edited");
     $(".menu-line1").addClass("menu-indicator-color");
     $(".menu-line2").removeClass("menu-indicator-color");
     $(".menu-line3").removeClass("menu-indicator-color");
@@ -59,7 +66,7 @@ setInterval(function () {
     $(".menu-line3").addClass("menu-indicator-color");
   }
   if ($(".menu-main").is(":visible") && $(".menu1-title").offset().top <= 500) {
-    console.log("menu-main edited");
+    //console.log("menu-main edited");
     $(".menu-main").css("margin-top", "7vh");  
     if(inBigPictureMode){
       $(".menu-main").css("margin-bottom", "initial");
@@ -712,12 +719,7 @@ async function addModelToScene(menuNumber, itemNumber) {
   if (objectModel != null) {
     $(".food-big-picture-3d").attr("src", objectModel);
     var gltf;
-    try {
-      gltf = await loader.loadAsync(objectModel);
-    } catch (err){
-      console.log("error loading glb");
-      return;
-    }
+    gltf = await gltfLoader.loadAsync(objectModel);
     if (modelAdded) {
       scene.remove(model);
       model = null;
