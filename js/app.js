@@ -762,7 +762,7 @@ function getModelUrl(menuNumber, itemNumber) {
 
   if (menuNumber == 4 && itemNumber == 1) return "./asset/glb/7_lazania/lazania.glb";
   if (menuNumber == 4 && itemNumber == 2) return "./asset/glb/13_alferedo_pasta/alferedo.glb";
-  if (menuNumber == 4 && itemNumber == 3) return "./asset/glb/12_tandori_pasta/2.glb";
+  if (menuNumber == 4 && itemNumber == 3) return "./asset/glb/12_tandori_pasta/tandori.glb";
 
   if (menuNumber == 5 && itemNumber == 1) return "./asset/glb/1.glb";
   if (menuNumber == 5 && itemNumber == 2) return "./asset/glb/2.glb";
