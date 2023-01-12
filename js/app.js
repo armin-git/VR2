@@ -23,6 +23,7 @@ let menuNumberLast;
 let itemNumberLast;
 let currentSession = null;
 var inBigPictureMode = false;
+var inARMode = false;
 var inMainMenu=false;
 var onPan=false
 
@@ -558,6 +559,7 @@ function init() {
       }   
 
       async function onSessionStarted(session) {
+        inARMode=true;
         addModelToScene(menuNumber, itemNumber);
         session.addEventListener("end", onSessionEnded);
         renderer.xr.setReferenceSpaceType("local");
@@ -593,7 +595,7 @@ function init() {
           if (currentSession === null) {
             console.log(buttonId);
             if(buttonId="icon-qube"){
-
+              
               showBigPicture();
 
               for (let i = 0; i <= 6; i++) {
@@ -704,7 +706,7 @@ function init() {
 
 async function addModelToScene(menuNumber, itemNumber) {
   console.log("addModelToScene");
-  if (menuNumberLast == menuNumber && itemNumberLast == itemNumber) {
+  if (inARMode==false && menuNumberLast == menuNumber && itemNumberLast == itemNumber) {
     console.log("duplicated menu");
     return;
   }
@@ -719,7 +721,12 @@ async function addModelToScene(menuNumber, itemNumber) {
   if (objectModel != null) {
     $(".food-big-picture-3d").attr("src", objectModel);
     var gltf;
-    gltf = await gltfLoader.loadAsync(objectModel);
+
+    if(inARMode){
+      gltf = await gltfLoader.loadAsync(objectModel);
+    }
+    if(gltf==undefined) return;
+    
     if (modelAdded) {
       scene.remove(model);
       model = null;
