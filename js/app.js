@@ -771,8 +771,8 @@ function getModelUrl(menuNumber, itemNumber) {
   if (menuNumber == 4 && itemNumber == 2) return "./asset/glb/13_alferedo_pasta/alferedo.glb";
   if (menuNumber == 4 && itemNumber == 3) return "./asset/glb/12_tandori_pasta/tandori.glb";
 
-  if (menuNumber == 5 && itemNumber == 1) return "./asset/glb/1.glb";
-  if (menuNumber == 5 && itemNumber == 2) return "./asset/glb/2.glb";
+  if (menuNumber == 5 && itemNumber == 1) return "";
+  if (menuNumber == 5 && itemNumber == 2) return "";
 
   if (menuNumber == 6 && itemNumber == 1) return "./asset/glb/11_pizzasisili/pizza_circle_150dpi.glb";
 }
